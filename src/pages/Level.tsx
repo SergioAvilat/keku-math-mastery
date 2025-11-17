@@ -70,7 +70,9 @@ export default function Level() {
     }
 
     if (currentExerciseIndex < exercises.length - 1) {
-      setTimeout(() => setCurrentExerciseIndex(currentExerciseIndex + 1), 1500);
+      setTimeout(() => {
+        setCurrentExerciseIndex(prev => prev + 1);
+      }, 1500);
     } else {
       completeLevel();
     }
@@ -222,6 +224,7 @@ export default function Level() {
       {/* Exercise Content */}
       <main className="max-w-3xl mx-auto px-4 py-8">
         <ExerciseCard
+          key={currentExerciseIndex}
           exercise={currentExercise}
           onAnswer={handleAnswer}
         />
